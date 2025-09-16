@@ -1,4 +1,4 @@
 */**/node_modules
 */**/dist
 */**/.tanstack
-*/**/**/src/routeTree.gen.*
+*/**/**/routeTree.gen.*
