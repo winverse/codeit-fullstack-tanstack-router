@@ -1,18 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { tanstackRouter } from '@tanstack/router-vite-plugin';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), TanStackRouterVite({ disableTypes: true })],
+  plugins: [react(), tanstackRouter({ disableTypes: true })],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve('src'),
     },
   },
 });
