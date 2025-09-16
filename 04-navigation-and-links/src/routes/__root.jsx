@@ -1,35 +1,59 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const Route = createRootRoute({
-  component: () => (
+  component: RootComponent,
+});
+
+function RootComponent() {
+  const { isAuthenticated, logout } = useAuth();
+  return (
     <>
       <nav className="nav">
         <ul>
           <li>
-            <Link to="/" className="nav-link">
+            <Link
+              to="/"
+              className="nav-link"
+              activeProps={{ className: 'active' }}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about" className="nav-link">
+            <Link
+              to="/about"
+              className="nav-link"
+              activeProps={{ className: 'active' }}
+            >
               About
             </Link>
           </li>
-          <li>
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link to="/products" className="nav-link">
-              Products
-            </Link>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <Link
+                to="/profile"
+                className="nav-link"
+                activeProps={{ className: 'active' }}
+              >
+                Profile
+              </Link>
+            </li>
+          )}
         </ul>
+        <div className="auth-status">
+          {isAuthenticated ? (
+            <button onClick={() => logout()}>Logout</button>
+          ) : (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          )}
+        </div>
       </nav>
       <div className="container">
         <Outlet />
       </div>
     </>
-  ),
-})
+  );
+}
