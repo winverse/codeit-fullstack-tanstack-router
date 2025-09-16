@@ -1,21 +1,26 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+// src/routes/__root.jsx
+import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
 
 export const Route = createRootRoute({
   component: () => (
-    <div>
-      <nav>
+    <>
+      <nav className="root-nav">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" activeProps={{ className: 'active' }}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about" activeProps={{ className: 'active' }}>
+              About
+            </Link>
           </li>
         </ul>
       </nav>
-      <main>
+      <main className="root-main">
         <Outlet />
       </main>
-    </div>
+    </>
   ),
-})
+});
