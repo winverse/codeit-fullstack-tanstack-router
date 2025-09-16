@@ -5,8 +5,6 @@ export const Route = createFileRoute('/about')({
 });
 
 function AboutComponent() {
-  const navigate = useNavigate();
-
   return (
     <div>
       <h1 className="page-title">About Us</h1>
@@ -36,9 +34,7 @@ function AboutComponent() {
           기능입니다.
         </p>
 
-        <button className="btn mt-2" onClick={() => navigate({ to: '/' })}>
-          Go Home (useNavigate)
-        </button>
+        <button className="btn mt-2">Go Home (useNavigate)</button>
       </div>
     </div>
   );
