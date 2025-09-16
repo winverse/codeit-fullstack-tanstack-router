@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/about')({
   component: () => (
@@ -17,4 +17,4 @@ export const Route = createFileRoute('/about')({
       </div>
     </div>
   ),
-})
+});
